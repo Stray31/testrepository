@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grading System</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        body {
+            display: flex;
+            height: 100vh;
+        }
+
+        
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #34495e;
+        }
+
+        .sidebar ul li.active {
+            background-color: #2980b9;
+        }
+
+        
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #ecf0f1;
+            overflow-y: auto;
+        }
+
+        
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #bdc3c7;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2980b9;
+            color: #fff;
+        }
+
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3498db;
+        }
+
+        
+        .explanation {
+            display: none;
+            text-align: center;
+            
+            padding-top: 100px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            font-size: 100px;
+        }
+        .explanation-text {
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding-top: 30px; 
+            line-height: 1.5; 
+            text-align: justify;
+            font-size: 20px;
+        }
+        .explanation- {
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding-top: 50px; 
+            line-height: 1.5; 
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Grading System</h2>
+        <ul>
+            <li class="active" onclick="showSection('dashboard')">Dashboard</li>
+            <li onclick="showSection('studentProfiles')">Student Profiles</li>
+            <li onclick="showSection('gradeEntry')">Grade Entry</li>
+            <li onclick="showSection('reports')">Reports</li>
+            <li onclick="showSection('explanation')">Explanation</li>
+
+        </ul>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content">
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section active">
+            <h2>Dashboard</h2>
+            <p>Welcome to the Student Grading System. View recent grade entries and performance summaries here.</p>
+            <table>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Recent Grade</th>
+                    <th>Average Grade</th>
+                </tr>
+                <tr>
+                    <td>Jerald Napoles</td>
+                    <td>96%</td>
+                    <td>92%</td>
+                </tr>
+                <tr>
+                    <td>Haryz Huidem</td>
+                    <td>95%</td>
+                    <td>98%</td>
+                </tr>
+                <tr>
+                    <td>Gerald Siazon</td>
+                    <td>97%</td>
+                    <td>94%</td>
+                </tr>
+                <tr>
+                    <td>Armand Christian Stamaria</td>
+                    <td>95%</td>
+                    <td>98%</td>
+                </tr>
+                <tr>
+                    <td>Gabriel Miñoza</td>
+                    <td>99%</td>
+                    <td>99%</td>
+                </tr>
+                <tr>
+                    <td>Edjay Cuadra</td>
+                    <td>92%</td>
+                    <td>98%</td>
+                </tr>
+                <tr>
+                    <td>Banluke Bamular</td>
+                    <td>99%</td>
+                    <td>98%</td>
+                </tr>
+                <tr>
+                    <td>Maithon Gonzaga</td>
+                    <td>94%</td>
+                    <td>97%</td>
+                </tr>
+
+                
+            </table>
+        </div>
+
+        <!-- Student Profiles Section -->
+        <div id="studentProfiles" class="section">
+            <h2>Student Profiles</h2>
+            <p>View and manage student information here.</p>
+            <table>
+                <tr>
+                    <th>Student Name</th>
+                    <th>ID</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Jerald Napoles</td>
+                    <td>12345</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Haryz Huidem</td>
+                    <td>23456</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Gerald Siazon</td>
+                    <td>34567</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Armand Christian Stamaria</td>
+                    <td>45678</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Gabriel Miñoza</td>
+                    <td>56789</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Edjay Cuadra	</td>
+                    <td>45634</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Janluke Pamular</td>
+                    <td>13665</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+                <tr>
+                    <td>Maithon Gonzaga</td>
+                    <td>89654</td>
+                    <td><button>View Profile</button></td>
+                </tr>
+
+               
+            </table>
+        </div>
+
+        <!-- Grade Entry Section -->
+        <div id="gradeEntry" class="section">
+            <h2>Grade Entry</h2>
+            <form>
+                <label for="student">Select Student:</label>
+                <select id="student">
+                    <option value="john_doe">Jerald Napoles</option>
+                    <option value="john_doe">Haryz Huidem</option>
+                    <option value="john_doe">Jerald Napoles</option>
+                    <option value="john_doe">Gerald Siazon</option>
+                    <option value="john_doe">Armand Christian Stamaria</option>
+                    <option value="john_doe">Gabriel Miñoza</option>
+                    <option value="john_doe">Edjay Cuadra</option>
+                    <option value="john_doe">Janluke Pamular</option>
+                    <option value="john_doe">Janluke Pamular</option>
+
+                    
+                </select>
+
+                <label for="grade">Enter Grade:</label>
+                <input type="text" id="grade" placeholder="Enter grade here...">
+
+                <button type="submit">Submit Grade</button>
+            </form>
+        </div>
+
+        <!-- Reports Section -->
+        <div id="reports" class="section">
+            <h2>Reports and Analytics</h2>
+            <p>View student performance reports here.</p>
+            <table>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Overall Grade</th>
+                    <th>Performance</th>
+                </tr>
+                <tr>
+                    <td>Jerald Napoles</td>
+                    <td>92%</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>Haryz Huidem</td>
+                    <td>95%</td>
+                    <td>Very Good</td>
+                </tr>
+                <tr>
+                    <td>Gerald Siazon</td>
+                    <td>898%</td>
+                    <td>Very Good</td>
+                </tr>
+                <tr>
+                    <td>Armand Christian Stamaria</td>
+                    <td>90%</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>Gabriel Miñoza</td>
+                    <td>98%</td>
+                    <td>Very Good</td>
+                </tr>
+                <tr>
+                    <td>Edjay Cuadra</td>
+                    <td>93%</td>
+                    <td>Very Good</td>
+                </tr>
+                <tr>
+                    <td>Janluke Pamular</td>
+                    <td>88%</td>
+                    <td>Good</td>
+                </tr>
+                <tr>
+                    <td>Maithon Gonzaga</td>
+                    <td>89%</td>
+                    <td>Good</td>
+                </tr>
+
+                <!-- Add more rows as needed -->
+            </table>
+        </div>
+        <div id="explanation" class="section">
+            
+            <center><h2 class="explanation-">Explanation</h2></center>
+            <p class="explanation-text">The Student Grading System design is structured to support a user-friendly experience, enabling users to accomplish 
+                grading and record-keeping tasks efficiently. The sidebar navigation offers a clear, accessible layout with four 
+                main sections: Dashboard, Student Profiles, Grade Entry, and Reports, allowing users to switch between tasks seamlessly. 
+                The Dashboard provides a quick overview of recent grade entries and student averages, giving users immediate insights into 
+                overall class performance without needing to delve into individual records. In the Student Profiles section, users can view 
+                and manage student details in a table format, with dedicated "View Profile" buttons for easy access to individual records. 
+                This setup supports efficient navigation for reviewing or updating student information. The Grade Entry section simplifies 
+                grade submission by using a dropdown to select students and an input field to record grades, ensuring that grade entry is 
+                straightforward and organized. Finally, the Reports section presents performance data and analytics, allowing users to 
+                track overall trends in student achievement. This well-organized interface is designed to streamline grading tasks, 
+                improve data visibility, and facilitate seamless navigation, making it an effective tool for instructors and administrators.
+            
+
+            </p>
+        </div>
+    </div>
+
+    <!-- JavaScript for Section Navigation -->
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Update sidebar active state
+            document.querySelectorAll('.sidebar ul li').forEach(li => li.classList.remove('active'));
+            document.querySelector(`.sidebar ul li[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
